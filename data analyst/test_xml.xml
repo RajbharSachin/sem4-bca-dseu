@@ -1,0 +1,22 @@
+<MyDataset>
+	<Record>
+		<Number>1</Number>
+		<String>welcome</String>
+		<Boolean>True</Boolean>
+	</Record>
+	<Record>
+		<Number>2</Number>
+		<String>to</String>
+		<Boolean>False</Boolean>
+	</Record>
+	<Record>
+		<Number>3</Number>
+		<String>the</String>
+		<Boolean>False</Boolean>
+	</Record>
+	<Record>	
+		<Number>4</Number>
+		<String>class</String>
+		<Boolean>True</Boolean>
+	</Record>
+</MyDataset>

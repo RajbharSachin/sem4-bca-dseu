@@ -1,0 +1,23 @@
+S3 bucket: 
+CloudFront distribution domain: 
+User pool ID: 
+App client ID: 
+Amazon Cognito domain prefix: 
+Identity pool ID: 
+
+The Origin Access Id is: E3E8R5DFZPK22V
+# The S3 bucket name is: 
+"c48079a691861l4145790t1w557613970021-s3bucket-1dxzxokt73hq7"
+# The CloudFront distribution domain is: 
+"d1h77qizwdmttp.cloudfront.net"
+
+url: raj-22-05-2023
+user pool id: us-east-1_Jj1L9HwyN
+client id: 679bei70le1e0tp961i46kcbtf
+
+Identity pool ID: us-east-1:91b79e95-4b3d-4842-a675-cc08becaea9e
+
+
+Practical 19
+Aim :- Paas: a) Develop a application on AWS Cloud 9
+		 b) Deploy & authenticate using cloud9; cloudFront & Cognito

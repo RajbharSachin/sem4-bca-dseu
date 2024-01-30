@@ -1,0 +1,346 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "72cbe88d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   Duration          Date  Pulse  Maxpulse  Calories   age\n",
+      "0       NaN           340    110       130     409.1  19.0\n",
+      "1      60.0  '2020/12/02'    117       145     479.0   NaN\n",
+      "2      60.0  '2020/12/03'    103       135     340.0   NaN\n",
+      "3      45.0  '2020/12/04'    109       175     282.4   NaN\n",
+      "4      45.0  '2020/12/05'    117       148     406.0   NaN\n"
+     ]
+    }
+   ],
+   "source": [
+    "# ques 1\n",
+    "\n",
+    "import pandas as pd\n",
+    "csv_path = \"dataexcel.csv\"\n",
+    "df = pd.read_csv(csv_path)\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "47fbae0d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Index(['Duration', 'Date', 'Pulse', 'Maxpulse', 'Calories'], dtype='object')\n"
+     ]
+    }
+   ],
+   "source": [
+    "# ques 2 \n",
+    "\n",
+    "columns =  df.columns\n",
+    "print(columns)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "d7cfd1ef",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   Duration          Date  Pulse  Maxpulse  Calories\n",
+      "3      45.0  '2020/12/04'    109       175     282.4\n",
+      "4      45.0  '2020/12/05'    117       148     406.0\n",
+      "1      60.0  '2020/12/02'    117       145     479.0\n",
+      "2      60.0  '2020/12/03'    103       135     340.0\n",
+      "0       NaN           340    110       130     409.1\n"
+     ]
+    }
+   ],
+   "source": [
+    "# ques 3 \n",
+    "\n",
+    "sorteddf= df.sort_values(by='Maxpulse',ascending=False)\n",
+    "print(sorteddf)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "9eb44d89",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "111.2\n"
+     ]
+    }
+   ],
+   "source": [
+    "# ques 4 \n",
+    "\n",
+    "mean=df['Pulse'].mean()\n",
+    "print(mean)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "94791ba6",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "52.5\n",
+      "   Duration          Date  Pulse  Maxpulse  Calories\n",
+      "0      52.5           340    110       130     409.1\n",
+      "1      60.0  '2020/12/02'    117       145     479.0\n",
+      "2      60.0  '2020/12/03'    103       135     340.0\n",
+      "3      45.0  '2020/12/04'    109       175     282.4\n",
+      "4      45.0  '2020/12/05'    117       148     406.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "# ques 5\n",
+    "\n",
+    "column_mean = df['Duration'].mean()\n",
+    "print(column_mean)\n",
+    "df['Duration'] = df['Duration'].fillna(column_mean)\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "b52d9c81",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   Duration          Date  Pulse  Maxpulse  Calories   age\n",
+      "0       NaN           340    110       130     409.1  19.0\n",
+      "1      60.0  '2020/12/02'    117       145     479.0   NaN\n",
+      "2      60.0  '2020/12/03'    103       135     340.0   NaN\n",
+      "3      45.0  '2020/12/04'    109       175     282.4   NaN\n",
+      "4      45.0  '2020/12/05'    117       148     406.0   NaN\n",
+      "   Duration          Date  Pulse  Maxpulse  Calories\n",
+      "0       NaN           340    110       130     409.1\n",
+      "1      60.0  '2020/12/02'    117       145     479.0\n",
+      "2      60.0  '2020/12/03'    103       135     340.0\n",
+      "3      45.0  '2020/12/04'    109       175     282.4\n",
+      "4      45.0  '2020/12/05'    117       148     406.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "# ques 6\n",
+    "import pandas as pd\n",
+    "\n",
+    "\n",
+    "csv_path = \"dataexcel.csv\"\n",
+    "\n",
+    "df = pd.read_csv(csv_path)\n",
+    "\n",
+    "# Display the dataframe\n",
+    "print(df)\n",
+    "columns_with_nulls = df.columns[df.isnull().sum() == 4]\n",
+    "\n",
+    "df = df.drop(columns_with_nulls, axis=1)\n",
+    "\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "id": "facfd440",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   Duration          Date  NewColumn  Pulse  Maxpulse  Calories\n",
+      "0       NaN           340          1    110       130     409.1\n",
+      "1      60.0  '2020/12/02'          2    117       145     479.0\n",
+      "2      60.0  '2020/12/03'          3    103       135     340.0\n",
+      "3      45.0  '2020/12/04'          4    109       175     282.4\n",
+      "4      45.0  '2020/12/05'          5    117       148     406.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "# ques 7\n",
+    "\n",
+    "new_column = [1, 2, 3, 4,5]\n",
+    "index_location = 2\n",
+    "df.insert(index_location, 'NewColumn', new_column)\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "5f2d4617",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   Pulse  Maxpulse\n",
+      "0    110       130\n",
+      "1    117       145\n",
+      "2    103       135\n",
+      "3    109       175\n",
+      "4    117       148\n"
+     ]
+    }
+   ],
+   "source": [
+    "# ques 8\n",
+    "\n",
+    "selected_columns = df.select_dtypes(include=[int])\n",
+    "print(selected_columns)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "f5c9a040",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Duration    1\n",
+      "Date        0\n",
+      "Pulse       0\n",
+      "Maxpulse    0\n",
+      "Calories    0\n",
+      "dtype: int64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# ques 9 \n",
+    "\n",
+    "nan_counts = df.isnull().sum()\n",
+    "print(nan_counts)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "f95e74ae",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[   Duration          Date  Pulse  Maxpulse  Calories\n",
+      "0       NaN           340    110       130     409.1\n",
+      "1      60.0  '2020/12/02'    117       145     479.0\n",
+      "2      60.0  '2020/12/03'    103       135     340.0,    Duration          Date  Pulse  Maxpulse  Calories\n",
+      "3      45.0  '2020/12/04'    109       175     282.4\n",
+      "4      45.0  '2020/12/05'    117       148     406.0]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# ques 10 \n",
+    "\n",
+    "import numpy as np\n",
+    "df_parts = np.array_split(df, 2)\n",
+    "print (df_parts)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "c193f379",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "colum wise\n",
+      "   Calories  Maxpulse  Pulse          Date  Duration\n",
+      "0     409.1       130    110           340       NaN\n",
+      "1     479.0       145    117  '2020/12/02'      60.0\n",
+      "2     340.0       135    103  '2020/12/03'      60.0\n",
+      "3     282.4       175    109  '2020/12/04'      45.0\n",
+      "4     406.0       148    117  '2020/12/05'      45.0\n",
+      "row wise\n",
+      "   Duration          Date  Pulse  Maxpulse  Calories\n",
+      "4      45.0  '2020/12/05'    117       148     406.0\n",
+      "3      45.0  '2020/12/04'    109       175     282.4\n",
+      "2      60.0  '2020/12/03'    103       135     340.0\n",
+      "1      60.0  '2020/12/02'    117       145     479.0\n",
+      "0       NaN           340    110       130     409.1\n"
+     ]
+    }
+   ],
+   "source": [
+    "# ques 11\n",
+    "\n",
+    "print(\"colum wise\")\n",
+    "df_reversed_column = df.iloc[:, ::-1]\n",
+    "print(df_reversed_column)\n",
+    "print(\"row wise\")\n",
+    "df_reversed_row = df[::-1]\n",
+    "print(df_reversed_row)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "8872e7af",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.13"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

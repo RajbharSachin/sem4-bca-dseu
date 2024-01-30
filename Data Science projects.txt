@@ -1,0 +1,5 @@
+Data Science projects:
+
+Exploartory data analysis
+Recommendation system
+Fake new detection
